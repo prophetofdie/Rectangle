@@ -1,3 +1,4 @@
+#pragma once
 #include "Point.hpp"
 #include <stdexcept> // для std::invalid_argument
 
@@ -11,7 +12,7 @@ class Rect {
 	}
 public:
 	Type width, height;
-	Point<Type> origin;
+	Point<Type> origin; // Точка слева снизу
 
 	/// <summary>
 	/// Инициализирует прямоугольник, с левого нижнего угла
@@ -19,7 +20,8 @@ public:
 	Rect(Point<Type> p, Type width, Type height)
 		: origin{ p }, width{ width }, height{ height }
 	{
-		if (width < 0 || height < 0) throw std::invalid_argument("Width and height must be non-negative.");
+		if (width < 0 || height < 0) 
+			throw std::invalid_argument("Width and height must be non-negative.");
 	}
 
 	/// <summary>
@@ -38,7 +40,8 @@ public:
 			max(first.y, second.y) - min(first.y, second.y))
 	{ }
 
-	Rect() : Rect(0, 0, 0, 0)
+	Rect()
+		: Rect(0, 0, 0, 0)
 	{ }
 
 	/// <summary>
@@ -130,6 +133,14 @@ public:
 			max(origin.x + width, other.x) - min(origin.x, other.x),
 			max(origin.y + height, other.y) - min(origin.y, other.y)
 		);
+	}
+
+	/// <summary>
+	/// Перемещение прямоугольника на заданный вектор
+	/// </summary>
+	void Move(const Point<Type>& movement) {
+		this->origin.x += movement.x;
+		this->origin.y += movement.y;
 	}
 
 	/// <summary>
