@@ -2,7 +2,7 @@
 #include "Point.hpp"
 #include <stdexcept> // для std::invalid_argument
 
-template<typename Type>
+template<Numeric Type>
 class Rect {
 	static Type min(Type f, Type s) {
 		return f < s ? f : s;
