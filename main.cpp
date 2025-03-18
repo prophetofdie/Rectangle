@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "Rectangle.hpp"
 #include "Point.hpp"
-#include <cassert>  // Для использования assert
+#include <cassert>  // For assert
 
 void testDefaultConstructor() {
     Rect<int> r;
@@ -207,8 +207,7 @@ void testDoubleMove() {
 }
 
 int main() {
-    // Тесты для типа int 
-    // Положительные значения
+    // Positive int values
     testDefaultConstructor();
     testPointConstructor();
     testXYConstructor();
@@ -222,7 +221,7 @@ int main() {
     testContainsPoint();
     testContainsRect();
     testEquality();
-    // Тесты для типа double
+    // double values
     testDoubleType();
     testDoubleIntersection();
     testDoubleUnion();
@@ -230,7 +229,7 @@ int main() {
     testDoublePerimeter();
     testDoubleMove();
 
-    // Тесты для отрицательных значений
+    // Negative values
     testNegativeCoordinates();
     testNegativeWidthHeight();
     testNegativeMovement();

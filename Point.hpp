@@ -1,11 +1,9 @@
 #pragma once
 
-// Концепт для числовых типов
-template <typename T>
-concept Numeric = std::is_arithmetic_v<T>;  // Проверка на числовой тип (int, float, double и т.д.)
-
-template<Numeric T>
+template<typename T>
 struct Point {
+	static_assert(std::is_arithmetic_v<T>, "Type must be arithmetic");
+
 	T x, y;
 	Point(T x, T y)
 		: x{ x }, y{ y }
