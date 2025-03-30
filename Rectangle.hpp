@@ -1,6 +1,7 @@
-#pragma once
+﻿#pragma once
 #include "Point.hpp"
 #include <ostream>
+#include <sstream>
 #include <stdexcept> // for std::invalid_argument
 
 template<typename Type>
@@ -180,6 +181,13 @@ public:
 	/// </summary>
 	Type Perimeter() const {
 		return 2 * (width + height);
+	}
+
+	std::string ToString() const {
+		std::stringstream ss{};
+		ss << "Rectangle: [Origin: (" << origin.x << ", " << origin.y
+			<< "), Width: " << width << ", Height: " << height << "]";
+		return ss.str();
 	}
 };
 
