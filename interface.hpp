@@ -428,6 +428,7 @@ void main_menu() {
 				write_file();
 				break;
 			case 7:
+				std::cout << "До свидания!\n";
 				return;
 			}
 		}
