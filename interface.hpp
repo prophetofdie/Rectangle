@@ -364,6 +364,32 @@ void write_file() {
 	std::cout << "Успешно сохранено в файл: " << fn << "\n\n";
 }
 
+void delete_val() {
+	if (vals.empty()) {
+		std::cout << "Нет переменных для удаления\n\n";
+		return;
+	}
+	std::string input;
+	do {
+		std::cout << "Выберете переменную для удаления\n\n";
+
+		show_vals();
+
+		std::cout << "Введите имя переменной: ";
+
+		std::cin >> input;
+
+		clear_console();
+
+		if (vals.contains(input)) {
+			vals.erase(input);
+			std::cout << "Переменная удалена\n\n";
+			return;
+		}
+		else std::cout << "Такой переменной нет\n\n";
+
+	} while (true);
+}
 /// <summary>
 /// Главное меню
 /// </summary>
@@ -376,8 +402,9 @@ void main_menu() {
 	while (true) {
 		try {
 			switch (check_ask("", { 
-				"Показать существуюие переменые",
+				"Показать существующие переменные",
 				"Создать новую переменную", 
+				"Удалить переменую",
 				"Изменить переменную",
 				"Загрузить переменные из файла",
 				"Выгрузить переменные в файл",
@@ -389,15 +416,18 @@ void main_menu() {
 				create_val_name();
 				break;
 			case 3:
-				manipulate_value();
+				delete_val();
 				break;
 			case 4:
-				read_file();
+				manipulate_value();
 				break;
 			case 5:
-				write_file();
+				read_file();
 				break;
 			case 6:
+				write_file();
+				break;
+			case 7:
 				return;
 			}
 		}
