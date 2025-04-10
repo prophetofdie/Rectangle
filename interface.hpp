@@ -74,7 +74,7 @@ void show_vals() {
 		std::cout << std::setw(align) << std::left << "Имя переменной" << "Значение" << "\n\n";
 
 		for (decltype(auto) v : vals) {
-			std::cout << std::setw(align) << std::left << v.first << v.second << '\n';
+			std::cout << std::setw(align) << std::left << v.first << v.second.ToString() << '\n';
 		}
 	}
 	std::cout << '\n';
